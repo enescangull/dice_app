@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:dice_app/hello_world.dart';
 
-var startAlignment = Alignment.topLeft;
-var endAlignment = Alignment.centerRight;
+const startAlignment = Alignment.topLeft;
+const endAlignment = Alignment.bottomRight;
 
 class GradientContainer extends StatelessWidget {
-  const GradientContainer({super.key});
+  const GradientContainer(this.startColor, this.endColor, {super.key});
 
+  final Color startColor;
+  final Color endColor;
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: const [
-            Color.fromARGB(255, 78, 13, 163),
-            Color.fromARGB(255, 12, 122, 173),
+          colors: [
+            startColor,
+            endColor,
           ],
           begin: startAlignment,
           end: endAlignment,
         ),
       ),
-      child: const Center(child: HelloWorld()),
+      child: Center(
+          child: Image.asset(
+        "assets/images/dice-6.png",
+        width: 200,
+      )),
     );
   }
 }
